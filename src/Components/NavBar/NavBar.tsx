@@ -13,7 +13,7 @@ const NavBar = () => {
       <Typography className={classes.title} variant="h5">Top 100</Typography>
       <TextField className={classes.input} label="Search" />
     </div>
-  );
+  )
 }
 
 export default NavBar;
