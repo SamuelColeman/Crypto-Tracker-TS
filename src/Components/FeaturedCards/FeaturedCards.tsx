@@ -16,10 +16,9 @@ const FeaturedCards = () => {
     getCoinCards()
   })
 
-  type Props = {
-    cardsChange: CardsChange["card"]
-    coinCard: CoinCard
-  }
+  type cardsChange =  CardsChange
+
+  type coinCard = CoinCard
 
   // interface CC {
   //   [percent_change_24h: string]: any
@@ -36,33 +35,33 @@ const FeaturedCards = () => {
     }
   }
 
-  const filterHighCard = async ({ cardsChange } : Props) => { 
-    const highCard = await cardsChange.reduce((acc, card) => {
+  const filterHighCard = async (cardsChange : cardsChange) => { 
+    const highCard = await cardsChange.reduce((acc : CoinCard, card) => {
       if (parseFloat(card.percent_change_24h) > parseFloat(acc.percent_change_24h) || acc.percent_change_24h === undefined) {
         acc = card
       }
       return acc
-    })
+    }, {} as coinCard)
     setIncreaseCoinCard(highCard)
   }
 
-  const filterLowCard = async ({ cardsChange } : Props) => { 
-    const lowCard = await cardsChange.reduce((acc, card) => {
+  const filterLowCard = async (cardsChange : cardsChange) => { 
+    const lowCard = await cardsChange.reduce((acc : CoinCard, card) => {
       if (parseFloat(card.percent_change_24h) < parseFloat(acc.percent_change_24h) || acc.percent_change_24h === undefined) {
         acc = card
       }
       return acc
-    })
+    }, {} as coinCard)
     setDecreaseCoinCard(lowCard)
   }
 
-  const filterWatchCard = async ({ cardsChange } : Props) => { 
+  const filterWatchCard = async (cardsChange : cardsChange) => { 
     const watchedCard = await cardsChange.reduce((acc, card) => {
       if (watchedCoinCard) {
         acc = card
       }
       return acc
-    })
+    }, {})
     setWatchedCoinCard(watchedCard)
   }
 

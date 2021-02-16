@@ -6,6 +6,4 @@ export type CoinCard = {
     symbol: string
 }
 
-export type CardsChange = {
-    card: CoinCard[]
-}
+export type CardsChange = CoinCard[]
