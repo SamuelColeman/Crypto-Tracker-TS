@@ -14,7 +14,7 @@ const Header = () => {
         <DonutSmallIcon className={classes.icon}/>
         <Typography className={classes.title} variant="h4">Crypto Tracker</Typography>
     </div>
-  );
+  )
 }
 
 export default Header;
